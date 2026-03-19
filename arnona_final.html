@@ -4,59 +4,204 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>תשלום ארנונה</title>
+
 <style>
- body {font-family: Heebo, Arial; background:#f6f8fb; margin:0; padding:0;}
- .wrap{max-width:900px;margin:auto;}
- .header{background:#1f487c;color:white;padding:16px;display:flex;gap:14px;align-items:center;}
- .header img{width:80px;height:auto;object-fit:contain;}
- .gold{height:5px;background:#d1a000;}
- .note{background:#f1f5ff;border:1px solid #dde8ff;padding:12px;margin:16px 0;border-radius:10px;}
- .card{background:white;padding:18px;border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,0.1);}
- .field{background:#f7f9fe;border:1px solid #e2e8f7;padding:12px;border-radius:12px;margin-bottom:12px;}
- .label{font-size:.85rem;color:#555;}
- .value{font-weight:700;margin-top:4px;}
- .cta a{display:inline-block;padding:12px 20px;border-radius:12px;margin:4px 0;font-weight:800;text-decoration:none;}
- .primary{background:#2c5fa7;color:white;}
- .secondary{background:white;border:1px solid #cfe0f6;color:#2c5fa7;}
- .footer{background:#0f2748;color:#fff;text-align:center;padding:20px;margin-top:20px;}
+  body {
+    font-family: Heebo, Arial;
+    background:#f6f8fb;
+    margin:0;
+    padding:0;
+  }
+
+  .wrap{
+    max-width:900px;
+    margin:auto;
+  }
+
+  /* HEADER */
+  .header{
+    background:#1f487c;
+    color:white;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+
+  .header img{
+    width:70px;
+    height:auto;
+    border-radius:6px;
+  }
+
+  .gold{
+    height:5px;
+    background:#d1a000;
+  }
+
+  /* NOTICE */
+  .note{
+    background:#fff3c8;
+    border:1px solid #ffe29b;
+    color:#5a4300;
+    padding:14px;
+    margin:20px 0;
+    border-radius:12px;
+    font-weight:700;
+    text-align:center;
+  }
+
+  /* CARD */
+  .card{
+    background:white;
+    padding:22px;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.08);
+  }
+
+  .field{
+    background:#f2f6ff;
+    border:1px solid #d7e3ff;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:16px;
+  }
+
+  .label{
+    font-size:.9rem;
+    color:#55627a;
+  }
+
+  .value{
+    margin-top:6px;
+    font-weight:800;
+    font-size:1.15rem;
+  }
+
+  /* BUTTONS */
+  .cta a{
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:15px 0;
+    border-radius:12px;
+    margin:8px 0;
+    font-weight:800;
+    font-size:1.15rem;
+    text-decoration:none;
+  }
+
+  .primary{
+    background:#255bbf;
+    color:white;
+    box-shadow:0 4px 12px rgba(37,91,191,0.35);
+    border:2px solid #1d4da0;
+  }
+
+  .secondary{
+    background:white;
+    border:1px solid #d0ddf5;
+    color:#255bbf;
+  }
+
+  .footer{
+    background:#0f2748;
+    color:white;
+    text-align:center;
+    padding:22px;
+    margin-top:30px;
+    font-size:0.95rem;
+  }
+
 </style>
 </head>
+
 <body>
 <div class="wrap">
- <div class="header">
-   <img src="https://raw.githubusercontent.com/arnona-landing/arnona-landing/refs/heads/main/%D7%9E%D7%93%D7%99%D7%94.jfif" />
-   <div>
-     <b>מחלקת אכיפה — עיריית ירושלים</b><br>
-     <small>תשלום ארנונה</small>
-   </div>
- </div>
- <div class="gold"></div>
- <div class="card">
-   <div class="note">תזכורת לפני נקיטת הליכי אכיפה.</div>
-   <div class="field"><div class="label">שם תושב</div><div class="value" id="name"></div></div>
-   <div class="field"><div class="label">מס' חשבון ארנונה</div><div class="value" id="account"></div></div>
-   <div class="field"><div class="label">כתובת</div><div class="value" id="address"></div></div>
-   <div class="field"><div class="label">גובה החוב (₪)</div><div class="value" id="balance" style="color:#b71c1c;"></div></div>
-   <div class="cta">
-     <a id="paybtn" class="primary" target="_blank">לתשלום</a><br>
-     <a class="secondary" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">פירוט חשבון</a><br>
-     <a class="secondary" href="tel:02-6293333">☎ מעבר לנציג</a><br>
-     <a id="wa" class="secondary" target="_blank">🤖 ArnonaBot</a>
-   </div>
- </div>
- <div class="footer">
-   אגף ארנונה – עיריית ירושלים<br>שעות מענה: 08:00–18:00<br>טלפון המוקד: 02‑6293333
- </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="https://raw.githubusercontent.com/arnona-landing/arnona-landing/refs/heads/main/%D7%9E%D7%93%D7%99%D7%94.jfif">
+
+    <div>
+      <b style="font-size:1.25rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
+      <small>תשלום ארנונה</small>
+    </div>
+  </div>
+
+  <div class="gold"></div>
+
+  <!-- MAIN -->
+  <div class="card">
+
+    <div class="note">
+      ⚠️ תזכורת לפני נקיטת הליכי אכיפה.
+    </div>
+
+    <div class="field">
+      <div class="label">שם תושב</div>
+      <div class="value" id="name"></div>
+    </div>
+
+    <div class="field">
+      <div class="label">מס' חשבון ארנונה</div>
+      <div class="value" id="account"></div>
+    </div>
+
+    <div class="field">
+      <div class="label">כתובת</div>
+      <div class="value" id="address"></div>
+    </div>
+
+    <div class="field">
+      <div class="label">גובה החוב (₪)</div>
+      <div class="value" id="balance" style="color:#b71c1c;"></div>
+    </div>
+
+    <!-- CTA BUTTONS -->
+    <div class="cta">
+
+      <a id="paybtn" class="primary" target="_blank">
+        💳 לתשלום עכשיו
+      </a>
+
+      <a class="secondary" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
+        פירוט חשבון
+      </a>
+
+      <a class="secondary" href="tel:02-6293333">
+        ☎ מעבר לנציג
+      </a>
+
+      <a id="wa" class="secondary" target="_blank">
+        🤖 ArnonaBot
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    אגף ארנונה – עיריית ירושלים<br>
+    שעות מענה: 08:00–18:00<br>
+    טלפון המוקד: 02‑6293333
+  </div>
+
 </div>
+
 <script>
 const url = new URL(window.location.href);
 function val(x){ return url.searchParams.get(x) || ""; }
-document.getElementById("name").textContent = val("name");
-document.getElementById("account").textContent = val("account");
-document.getElementById("address").textContent = val("address");
-document.getElementById("balance").textContent = val("balance");
-document.getElementById("paybtn").href = val("pay");
-document.getElementById("wa").href = "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
+
+document.getElementById("name").textContent     = val("name");
+document.getElementById("account").textContent  = val("account");
+document.getElementById("address").textContent  = val("address");
+document.getElementById("balance").textContent  = val("balance");
+document.getElementById("paybtn").href          = val("pay");
+
+document.getElementById("wa").href =
+  "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
 </script>
+
 </body>
 </html>
