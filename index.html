@@ -76,11 +76,11 @@
 
     <a id="paybtn" class="cta pay" target="_blank">💳 לתשלום עכשיו</a>
 
-    <a class="cta info" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
+    <a class="cta info" target="_blank" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval">
       📄 פירוט חשבון מלא
     </a>
 
-    <a class="cta info" href="tel:026293333">
+    <a class="cta info" href="tel:02-6293333">
       ☎ מעבר לנציג — <span class="ltr">02-6293333</span>
     </a>
 
@@ -102,7 +102,7 @@ document.getElementById("name").textContent    = val("name");
 document.getElementById("account").textContent = val("account");
 document.getElementById("address").textContent = val("address");
 document.getElementById("balance").textContent = val("balance");
-document.getElementById("paybtn").href = val("pay");
+document.getElementById("paybtn").href         = val("pay");
 document.getElementById("wa").href =
   "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
 </script>
