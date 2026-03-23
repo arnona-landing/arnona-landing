@@ -28,13 +28,12 @@ body{
   padding:20px;
   display:flex;
   align-items:center;
-  justify-content:flex-start;
-  gap:16px;
+  gap:20px;
   border-bottom:6px solid #F2A900;
   border-radius:0 0 12px 12px;
 }
 
-/* ✅ לוגו גדול יותר */
+/* ✅ לוגו אמיתי + גדול */
 .header img{
   width:170px;
   height:auto;
@@ -42,12 +41,12 @@ body{
   cursor:pointer;
 }
 
-/* ✅ טקסט מיושר למרכז בלי position absolute */
+/* ✅ כותרת ממורכזת באמת */
 .header-title{
   flex:1;
   text-align:center;
-  padding-right:50px; /* מפצה על רוחב הלוגו */
   line-height:1.25;
+  margin-right:20px; /* מפצה על רוחב הלוגו */
 }
 
 /* ===== אזהרה ===== */
@@ -104,9 +103,10 @@ body{
   font-weight:800;
   font-size:1.15rem;
   text-decoration:none;
+  transition:0.25s;
 }
 
-/* ✅ כפתור תשלום ירוק */
+/* ✅ תשלום ירוק */
 .btn-pay{
   background:#1fa548;
   color:white;
@@ -120,13 +120,20 @@ body{
 .btn-pay:hover span{
   transform:translateX(8px);
 }
+.btn-pay:hover{
+  background:#169640;
+  transform:translateY(-2px);
+}
 
-/* ✅ כל שאר הכפתורים — לבנים, מיושרים */
+/* ✅ כפתורי לבן */
 .btn-white{
   background:white;
   border:1px solid #d7e3ff;
   color:#1D3354;
   box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+.btn-white:hover{
+  background:#f8f9fc;
 }
 
 /* FOOTER חדש */
@@ -141,7 +148,11 @@ body{
   line-height:1.5;
 }
 
-.ltr{direction:ltr; display:inline-block;}
+.ltr{
+  direction:ltr;
+  unicode-bidi:embed;
+  display:inline-block;
+}
 
 </style>
 </head>
@@ -153,7 +164,7 @@ body{
   <!-- ===== HEADER ===== -->
   <div class="header">
 
-    <!-- ✅ לוגו תקין -->
+    <!-- ✅ לוגו אמיתי עם קישור -->
     <a href="https://www.jerusalem.muni.il" target="_blank">
       <img src="https://www.jerusalem.muni.il/images/logo-new2.svg" alt="לוגו עיריית ירושלים">
     </a>
@@ -178,22 +189,22 @@ body{
 
     <div class="buttons">
 
-      <!-- ✅ תשלום עכשיו -->
+      <!-- ✅ תשלום ירוק -->
       <a id="paybtn" class="btn btn-pay" target="_blank">
         <span>💳</span> לתשלום עכשיו
       </a>
 
-      <!-- ✅ פירוט חשבון מלא — כפתור לבן תקין -->
+      <!-- ✅ פירוט חשבון מלא (כפתור אמיתי) -->
       <a class="btn btn-white" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
         📄 פירוט חשבון מלא
       </a>
 
-      <!-- ✅ מעבר לנציג — בלי מספר בפנים -->
+      <!-- ✅ מעבר לנציג — לבן, בלי מספר בפנים -->
       <a class="btn btn-white" href="tel:026293333">
         ☎ מעבר לנציג
       </a>
 
-      <!-- ✅ בוט -->
+      <!-- ✅ ArnonaBot -->
       <a id="wa" class="btn btn-white" target="_blank">
         🤖 ArnonaBot
       </a>
@@ -215,12 +226,9 @@ document.getElementById("name").textContent = p.get("name") || "";
 document.getElementById("account").textContent = p.get("account") || "";
 document.getElementById("address").textContent = p.get("address") || "";
 document.getElementById("balance").textContent = p.get("balance") || "";
-
 document.getElementById("paybtn").href = p.get("pay") || "#";
-
 document.getElementById("wa").href =
-  "https://wa.me/972559597593?text=שלום " +
-  encodeURIComponent(p.get("name") || "");
+  "https://wa.me/972559597593?text=שלום " + encodeURIComponent(p.get("name") || "");
 </script>
 
 </body>
