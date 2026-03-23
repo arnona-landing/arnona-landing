@@ -33,22 +33,22 @@ body{
   position:relative;
 }
 
-/* ✅ לוגו גדול יותר */
+/* ✅ לוגו מוגדל */
 .header img{
   width:155px;
   height:auto;
   filter:brightness(0) invert(1);
   cursor:pointer;
-  margin-left:10px;
 }
 
-/* ✅ טקסט ממורכז באמת (טריק מקצועי) */
+/* ✅ הכותרת — ממורכזת ו־RTL */
 .header-title{
   position:absolute;
   left:50%;
   transform:translateX(-50%);
   text-align:center;
-  line-height:1.2;
+  direction:rtl;
+  line-height:1.25;
 }
 
 /* ===== אזהרה ===== */
@@ -71,7 +71,7 @@ body{
   box-shadow:0 4px 18px rgba(0,0,0,0.12);
 }
 
-/* ===== שדות ===== */
+/* ===== FIELDS ===== */
 .field{
   background:#f2f6ff;
   border:1px solid #d7e3ff;
@@ -89,14 +89,13 @@ body{
   font-size:1.2rem;
 }
 
-/* ===== אזור כפתורים ===== */
+/* ===== BUTTONS ===== */
 .buttons{
   margin-top:18px;
   display:flex;
   flex-direction:column;
   gap:14px;
 }
-
 .btn{
   display:block;
   width:100%;
@@ -121,15 +120,13 @@ body{
   margin-right:6px;
   transition:transform .3s ease;
 }
-.btn-pay:hover span{
-  transform:translateX(8px);
-}
+.btn-pay:hover span{ transform:translateX(8px); }
 .btn-pay:hover{
   transform:translateY(-2px);
   background:#169640;
 }
 
-/* ✅ שאר הכפתורים — לבנים */
+/* ✅ שאר הכפתורים לבנים */
 .btn-white{
   background:white;
   border:1px solid #d7e3ff;
@@ -140,7 +137,7 @@ body{
   background:#f8f9fc;
 }
 
-/* FOOTER */
+/* FOOTER — ✅ טקסט חדש */
 .footer{
   background:#0F2748;
   color:white;
@@ -148,9 +145,9 @@ body{
   text-align:center;
   margin-top:32px;
   border-radius:12px;
+  font-size:1.05rem;
+  line-height:1.5;
 }
-
-.ltr{direction:ltr; unicode-bidi:embed; display:inline-block;}
 
 </style>
 </head>
@@ -159,12 +156,12 @@ body{
 
 <div class="wrap">
 
-  <!-- ===== HEADER (לוגו + כותרת ממורכזת) ===== -->
+  <!-- ===== HEADER ===== -->
   <div class="header">
 
-    <!-- ✅ לוגו רשמי — בצד שמאל -->
+    <!-- ✅ לוגו עיריית ירושלים -->
     <a href="https://www.jerusalem.muni.il" target="_blank">
-      <img src="https://www.jerusalem.muni.il/images/logo-new2.svg" alt="עיריית ירושלים">
+      <img src="https://www.jerusalem.muni.il/images/logo-new2.svg" alt="לוגו עיריית ירושלים">
     </a>
 
     <!-- ✅ כותרת ממורכזת -->
@@ -175,7 +172,7 @@ body{
 
   </div>
 
-  <!-- ===== הכרטיס ===== -->
+  <!-- ===== כרטיס מידע ===== -->
   <div class="card">
 
     <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
@@ -187,22 +184,23 @@ body{
 
     <div class="buttons">
 
-      <!-- ✅ לתשלום עכשיו (נשאר כפי שהוא) -->
+      <!-- תשלום ירוק -->
       <a id="paybtn" class="btn btn-pay" target="_blank">
         <span>💳</span> לתשלום עכשיו
       </a>
 
-      <!-- ✅ פירוט חשבון מלא (לבן) -->
-      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" class="btn btn-white" target="_blank">
+      <!-- פירוט חשבון מלא -->
+      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" 
+         class="btn btn-white" target="_blank">
         📄 פירוט חשבון מלא
       </a>
 
-      <!-- ✅ מעבר לנציג — לבן, בלי מספר בתוך הכפתור -->
+      <!-- מעבר לנציג — לבן ובלי מספר בתוך הכפתור -->
       <a href="tel:026293333" class="btn btn-white">
         ☎ מעבר לנציג
       </a>
 
-      <!-- ✅ ArnonaBot -->
+      <!-- ArnonaBot -->
       <a id="wa" class="btn btn-white" target="_blank">
         🤖 ArnonaBot
       </a>
@@ -211,24 +209,23 @@ body{
 
   </div>
 
+  <!-- ===== FOOTER — ✅ טקסט חדש ===== -->
   <div class="footer">
-    אגף ארנונה – עיריית ירושלים<br>
-    טלפון: <span class="ltr">02‑6293333</span>
+    אגף לשירות ופניות ארנונה<br>
+    עיריית ירושלים
   </div>
 
 </div>
 
 <script>
-const p = new URL(window.location.href).searchParams;
-document.getElementById("name").textContent = p.get("name") || "";
-document.getElementById("account").textContent = p.get("account") || "";
-document.getElementById("address").textContent = p.get("address") || "";
-document.getElementById("balance").textContent = p.get("balance") || "";
-
-document.getElementById("paybtn").href = p.get("pay") || "#";
-document.getElementById("wa").href =
-  "https://wa.me/972559597593?text=שלום " +
-  encodeURIComponent(p.get("name") || "");
+const p=new URL(window.location.href).searchParams;
+document.getElementById("name").textContent=p.get("name")||"";
+document.getElementById("account").textContent=p.get("account")||"";
+document.getElementById("address").textContent=p.get("address")||"";
+document.getElementById("balance").textContent=p.get("balance")||"";
+document.getElementById("paybtn").href=p.get("pay")||"#";
+document.getElementById("wa").href=
+  "https://wa.me/972559597593?text=שלום "+encodeURIComponent(p.get("name")||"");
 </script>
 
 </body>
