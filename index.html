@@ -21,7 +21,7 @@ body {
   padding:16px;
 }
 
-/* ===== HEADER — עיריית ירושלים ===== */
+/* ===== HEADER — עיצוב עיריית ירושלים ===== */
 .header {
   background:#0F3A5F;
   color:white;
@@ -33,20 +33,19 @@ body {
   border-radius:0 0 12px 12px;
 }
 
-/* ✅ לוגו מוגדל */
+/* ✅ לוגו גדול ואמיתי */
 .header img {
-  width:130px;
+  width:135px;   /* ← מוגדל */
   height:auto;
-  filter:brightness(0) invert(1);
+  filter:brightness(0) invert(1); /* לוגו לבן */
   cursor:pointer;
 }
 
-/* טקסט כותרת */
 .header-title {
   text-align:right;
 }
 
-/* ===== התראה ===== */
+/* ===== אזהרה ===== */
 .note {
   background:#fff3c8;
   border:1px solid #ffe29b;
@@ -66,7 +65,7 @@ body {
   box-shadow:0 4px 18px rgba(0,0,0,0.12);
 }
 
-/* ===== שדות ===== */
+/* ===== FIELDS ===== */
 .field {
   background:#f2f6ff;
   border:1px solid #d7e3ff;
@@ -74,15 +73,8 @@ body {
   border-radius:12px;
   margin-bottom:16px;
 }
-.label {
-  font-size:0.9rem;
-  color:#55627a;
-}
-.value {
-  margin-top:4px;
-  font-weight:800;
-  font-size:1.2rem;
-}
+.label { font-size:0.9rem; color:#55627a; }
+.value { margin-top:4px; font-weight:800; font-size:1.2rem; }
 
 /* ===== BUTTONS ===== */
 .buttons {
@@ -104,7 +96,7 @@ body {
   transition:0.25s;
 }
 
-/* ✅ תשלום ירוק עם אייקון זז */
+/* ✅ כפתור תשלום ירוק עם אייקון זז */
 .btn-pay {
   background:#1fa548;
   color:white;
@@ -117,39 +109,36 @@ body {
   transition:transform .3s ease;
 }
 .btn-pay:hover span {
-  transform:translateX(8px);
+  transform:translateX(7px);
 }
 .btn-pay:hover {
   transform:translateY(-2px);
   background:#169640;
 }
 
-/* ✅ פירוט חשבון */
-.btn-info {
+/* ✅ שאר הכפתורים — לבנים נקיים */
+.btn-white {
   background:white;
-  border:1px solid #cfe0f6;
-  color:#255bbf;
+  border:1px solid #d7e3ff;
+  color:#2b4fa3;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+.btn-white:hover {
+  background:#f8f9fc;
 }
 
-/* ✅ מעבר לנציג — בלי מספר טלפון בכפתור */
+/* ✅ מעבר לנציג — רק טקסט ואייקון */
 .btn-call {
-  background:#1D3354;
-  border:1px solid #16273F;
-  color:white;
-  box-shadow:0 4px 16px rgba(29,51,84,0.3);
+  background:white;
+  border:1px solid #d7e3ff;
+  color:#1D3354;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
 .btn-call:hover {
-  background:#16273F;
+  background:#f8f9fc;
 }
 
-/* ✅ ArnonaBot */
-.btn-bot {
-  background:white;
-  border:1px solid #d8e2f1;
-  color:#2b4fa3;
-}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 .footer {
   background:#0F2748;
   color:white;
@@ -171,9 +160,9 @@ body {
   <!-- ===== HEADER ===== -->
   <div class="header">
 
-    <!-- ✅ לוגו בצד שמאל + קישור רשמי -->
-    https://www.jerusalem.muni.il
-      https://www.jerusalem.muni.il/images/logo-new2.svg
+    <!-- ✅ לוגו מקושר רשמית -->
+    <a href="https://www.jerusalem.muni.il" target="_blank">
+      <img src="https://www.jerusalem.muni.il/images/logo-new2.svg" alt="עיריית ירושלים">
     </a>
 
     <div class="header-title">
@@ -207,26 +196,27 @@ body {
       <div id="balance" class="value" style="color:#b71c1c;"></div>
     </div>
 
-    <!-- ===== כפתורים ===== -->
+    <!-- ===== כפתורים מסודרים ===== -->
     <div class="buttons">
 
-      <!-- ✅ תשלום ירוק -->
+      <!-- ✅ לתשלום עכשיו — ירוק -->
       <a id="paybtn" class="btn btn-pay" target="_blank">
         <span>💳</span> לתשלום עכשיו
       </a>
 
-      <!-- ✅ פירוט חשבון מלא -->
-      https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval
-        📄 פירוט חשבון מלא
+      <!-- ✅ פירוט חשבון — לבן -->
+      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval"
+         class="btn btn-white" target="_blank">
+         📄 פירוט חשבון מלא
       </a>
 
-      <!-- ✅ מעבר לנציג — ללא מספר בתוך הכפתור -->
-      tel:026293333
+      <!-- ✅ מעבר לנציג — לבן, בלי מספר -->
+      <a href="tel:026293333" class="btn btn-call">
         ☎ מעבר לנציג
       </a>
 
-      <!-- ✅ ArnonaBot -->
-      <a id="wa" class="btn btn-bot" target="_blank">
+      <!-- ✅ ArnonaBot — לבן -->
+      <a id="wa" class="btn btn-white" target="_blank">
         🤖 ArnonaBot
       </a>
 
@@ -234,14 +224,13 @@ body {
 
   </div>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <div class="footer">
     אגף ארנונה – עיריית ירושלים<br>
     טלפון: <span class="ltr">02‑6293333</span>
   </div>
 
 </div>
-
 
 <script>
 const url = new URL(window.location.href);
