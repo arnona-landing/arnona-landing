@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>תשלום ארנונה</title>
 
 <style>
@@ -14,10 +14,10 @@
     color:#0d1b2a;
   }
 
-  .wrap { max-width:900px; margin:auto; }
+  .wrap { max-width:900px; margin:auto; padding-bottom:40px; }
 
-  /* HEADER שחור-זהוב */
-  .header {
+  /* HEADER שחור–זהוב */
+  .header{
     background:black;
     color:white;
     padding:20px;
@@ -27,76 +27,82 @@
     border-bottom:6px solid #d1a000;
   }
 
-  .header svg { width:80px; height:80px; }
+  /* שרטוט אריה זמני */
+  .header svg { width:72px; height:72px; }
 
-  .note {
+  .note{
     background:#fff3c8;
     border:1px solid #ffe29b;
     color:#5a4300;
-    padding:12px;
+    padding:14px;
     margin:18px 0;
     border-radius:12px;
     text-align:center;
     font-weight:700;
   }
 
-  .card {
+  .card{
     background:white;
-    padding:20px;
+    padding:22px;
     border-radius:14px;
     box-shadow:0 4px 18px rgba(0,0,0,0.1);
   }
 
-  .field {
+  .field{
     background:#f2f6ff;
     border:1px solid #d7e3ff;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:12px;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:14px;
   }
 
-  .label { font-size:0.9rem; color:#55627a; }
-  .value { font-weight:700; font-size:1.1rem; }
+  .label{ font-size:0.9rem; color:#55627a; }
+  .value{ margin-top:4px; font-weight:800; font-size:1.17rem; }
 
-  .cta a {
+  .cta a{
     display:block;
     width:100%;
     text-align:center;
     padding:14px;
-    margin:10px 0;
     border-radius:12px;
     font-weight:800;
     font-size:1.1rem;
+    margin:10px 0;
     text-decoration:none;
   }
 
-  .primary {
+  .pay {
     background:#255bbf;
     color:white;
     border:2px solid #1b4a99;
   }
 
-  .secondary {
-    background:white;
+  .info {
+    background:#ffffff;
     border:1px solid #cfe0f6;
     color:#255bbf;
   }
 
-  .footer {
+  .footer{
     background:#0f2748;
     color:white;
-    padding:18px;
     text-align:center;
-    margin-top:25px;
+    padding:22px;
+    margin-top:28px;
+    font-size:0.95rem;
   }
+
+  /* מספר LTR תקין */
+  .ltr { direction:ltr; unicode-bidi:embed; display:inline-block; }
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
 
+  <!-- HEADER -->
   <div class="header">
-    <!-- שרטוט אריה זמני -->
     <svg viewBox="0 0 64 64">
       <rect x="6" y="6" width="52" height="52" rx="8" fill="#0a3f86" stroke="#d1a000" stroke-width="3"/>
       <path d="M32 18c4 0 7 3 7 7c2 1 4 3 4 6c0 4-3 7-6 7h-2l-1 4h-6l-1-4h-2
@@ -104,11 +110,12 @@
     </svg>
 
     <div>
-      <b style="font-size:1.3rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
+      <b style="font-size:1.32rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
       <small>תשלום ארנונה</small>
     </div>
   </div>
 
+  <!-- MAIN CARD -->
   <div class="card">
 
     <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
@@ -134,22 +141,26 @@
     </div>
 
     <!-- כפתור תשלום -->
-    <a id="paybtn" class="primary" target="_blank">💳 לתשלום עכשיו</a>
+    <a id="paybtn" class="cta pay" target="_blank">💳 לתשלום עכשיו</a>
+
+    <!-- פירוט חשבון -->
+    <a class="cta info" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
+      📄 פירוט חשבון מלא
+    </a>
 
     <!-- נציג -->
-    <a class="secondary" href="tel:026293333">
-      ☎ מעבר לנציג — 
-      <span style="direction:ltr; unicode-bidi:embed;">02-6293333</span>
+    <a class="cta info" href="tel:026293333">
+      ☎ מעבר לנציג — <span class="ltr">02-6293333</span>
     </a>
 
     <!-- בוט -->
-    <a id="wa" class="secondary" target="_blank">🤖 ArnonaBot</a>
+    <a id="wa" class="cta info" target="_blank">🤖 ArnonaBot</a>
 
   </div>
 
   <div class="footer">
     אגף ארנונה – עיריית ירושלים<br>
-    טלפון: <span style="direction:ltr; unicode-bidi:embed;">02-6293333</span>
+    טלפון: <span class="ltr">02-6293333</span>
   </div>
 
 </div>
@@ -158,14 +169,14 @@
 const url = new URL(window.location.href);
 const val = x => url.searchParams.get(x) || "";
 
-document.getElementById("name").textContent = val("name");
-document.getElementById("account").textContent = val("account");
-document.getElementById("address").textContent = val("address");
-document.getElementById("balance").textContent = val("balance");
+name.textContent     = val("name");
+account.textContent  = val("account");
+address.textContent  = val("address");
+balance.textContent  = val("balance");
 
-document.getElementById("paybtn").href = val("pay");
+paybtn.href = val("pay");
 
-document.getElementById("wa").href =
+wa.href =
   "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
 </script>
 
