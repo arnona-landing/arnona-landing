@@ -14,9 +14,8 @@
     color:#0d1b2a;
   }
 
-  .wrap { max-width:900px; margin:auto; padding-bottom:40px; }
+  .wrap { max-width:900px; margin:auto; padding:12px; }
 
-  /* HEADER שחור–זהוב */
   .header{
     background:black;
     color:white;
@@ -25,17 +24,17 @@
     align-items:center;
     gap:16px;
     border-bottom:6px solid #d1a000;
+    border-radius:0 0 12px 12px;
   }
 
-  /* שרטוט אריה זמני */
-  .header svg { width:72px; height:72px; }
+  .header svg { width:75px; height:75px; }
 
   .note{
     background:#fff3c8;
     border:1px solid #ffe29b;
     color:#5a4300;
     padding:14px;
-    margin:18px 0;
+    margin:20px 0;
     border-radius:12px;
     text-align:center;
     font-weight:700;
@@ -56,8 +55,16 @@
     margin-bottom:14px;
   }
 
-  .label{ font-size:0.9rem; color:#55627a; }
-  .value{ margin-top:4px; font-weight:800; font-size:1.17rem; }
+  .label{
+    font-size:0.9rem;
+    color:#55627a;
+  }
+
+  .value{
+    margin-top:4px;
+    font-weight:800;
+    font-size:1.2rem;
+  }
 
   .cta a{
     display:block;
@@ -71,14 +78,14 @@
     text-decoration:none;
   }
 
-  .pay {
+  .pay{
     background:#255bbf;
     color:white;
     border:2px solid #1b4a99;
   }
 
-  .info {
-    background:#ffffff;
+  .info{
+    background:white;
     border:1px solid #cfe0f6;
     color:#255bbf;
   }
@@ -89,11 +96,10 @@
     text-align:center;
     padding:22px;
     margin-top:28px;
-    font-size:0.95rem;
+    border-radius:12px;
   }
 
-  /* מספר LTR תקין */
-  .ltr { direction:ltr; unicode-bidi:embed; display:inline-block; }
+  .ltr{ direction:ltr; unicode-bidi:embed; display:inline-block; }
 </style>
 </head>
 
@@ -101,7 +107,6 @@
 
 <div class="wrap">
 
-  <!-- HEADER -->
   <div class="header">
     <svg viewBox="0 0 64 64">
       <rect x="6" y="6" width="52" height="52" rx="8" fill="#0a3f86" stroke="#d1a000" stroke-width="3"/>
@@ -115,7 +120,6 @@
     </div>
   </div>
 
-  <!-- MAIN CARD -->
   <div class="card">
 
     <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
@@ -140,20 +144,21 @@
       <div id="balance" class="value" style="color:#b71c1c;"></div>
     </div>
 
-    <!-- כפתור תשלום -->
+    <!-- תשלום -->
     <a id="paybtn" class="cta pay" target="_blank">💳 לתשלום עכשיו</a>
 
     <!-- פירוט חשבון -->
-    <a class="cta info" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
+    https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval
       📄 פירוט חשבון מלא
     </a>
 
-    <!-- נציג -->
-    <a class="cta info" href="tel:026293333">
-      ☎ מעבר לנציג — <span class="ltr">02-6293333</span>
+    <!-- מעבר לנציג -->
+    tel:026293333
+      ☎ מעבר לנציג —
+      <span class="ltr">02-6293333</span>
     </a>
 
-    <!-- בוט -->
+    <!-- ArnonaBot -->
     <a id="wa" class="cta info" target="_blank">🤖 ArnonaBot</a>
 
   </div>
@@ -169,14 +174,14 @@
 const url = new URL(window.location.href);
 const val = x => url.searchParams.get(x) || "";
 
-name.textContent     = val("name");
-account.textContent  = val("account");
-address.textContent  = val("address");
-balance.textContent  = val("balance");
+document.getElementById("name").textContent    = val("name");
+document.getElementById("account").textContent = val("account");
+document.getElementById("address").textContent = val("address");
+document.getElementById("balance").textContent = val("balance");
 
-paybtn.href = val("pay");
+document.getElementById("paybtn").href = val("pay");
 
-wa.href =
+document.getElementById("wa").href =
   "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
 </script>
 
