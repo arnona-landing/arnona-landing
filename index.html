@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>תשלום ארנונה</title>
 
 <style>
-
-/* ===== בסיס ===== */
 body{
   font-family:Heebo,Arial;
   background:#f0f3f7;
@@ -15,12 +13,6 @@ body{
   padding:0;
   color:#0d1b2a;
 }
-
-/* חשוב ביותר — מונע גלילה שמאלה */
-*{
-  box-sizing:border-box;
-}
-
 .wrap{
   max-width:900px;
   margin:auto;
@@ -46,19 +38,16 @@ body{
   filter:brightness(0) invert(1);
 }
 
-/* כותרת */
 .header-title{
   flex:1;
   text-align:center;
-  line-height:1.25;
   margin-right:30px; 
 }
 
-/* ===== אזהרה ===== */
+/* ===== NOTE ===== */
 .note{
   background:#fff3c8;
   border:1px solid #ffe29b;
-  color:#5a4300;
   padding:14px;
   margin:22px 0;
   border-radius:12px;
@@ -70,9 +59,9 @@ body{
 .card{
   background:white;
   padding:22px;
-  border-radius:14px;
+  border-radius:16px;
   box-shadow:0 4px 18px rgba(0,0,0,0.12);
-  overflow:hidden;  /* ✅ מונע יציאה שמאלה */
+  overflow:hidden; /* ✅ מונע בליטות */
 }
 
 /* ===== FIELDS ===== */
@@ -81,18 +70,19 @@ body{
   border:1px solid #d7e3ff;
   padding:14px;
   border-radius:12px;
-  margin-bottom:16px;
+  margin-bottom:14px;
 }
 .label{font-size:0.9rem;color:#55627a;}
 .value{margin-top:4px;font-weight:800;font-size:1.2rem;}
 
-/* ===== BUTTON WRAPPER ===== */
+/* ===== BUTTONS WRAPPER ===== */
 .buttons{
   margin-top:18px;
   display:flex;
   flex-direction:column;
   gap:14px;
   width:100%;
+  padding:0 4px; /* ✅ מונע חריגה שמאלה */
 }
 
 /* ===== BUTTON ===== */
@@ -100,12 +90,12 @@ body{
   display:block;
   width:100%;
   padding:15px;
+  box-sizing:border-box; /* ✅ תיקון חובה */
   text-align:center;
   border-radius:12px;
   font-weight:800;
   font-size:1.15rem;
   text-decoration:none;
-  transition:0.25s;
 }
 
 /* ירוק */
@@ -115,14 +105,12 @@ body{
   border:2px solid #17853a;
 }
 .btn-pay span{
-  display:inline-block;
   margin-right:6px;
-  transition:transform .3s ease;
+  display:inline-block;
+  transition:0.3s;
 }
-.btn-pay:hover span{transform:translateX(8px);}
-.btn-pay:hover{
-  background:#169640;
-  transform:translateY(-2px);
+.btn-pay:hover span{
+  transform:translateX(8px);
 }
 
 /* לבן */
@@ -142,20 +130,16 @@ body{
   margin-top:32px;
   border-radius:12px;
   font-size:1.05rem;
-  line-height:1.5;
 }
-
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
 
-  <!-- HEADER -->
   <div class="header">
-    https://www.jerusalem.muni.il
-      https://www.jerusalem.muni.il/images/logo-new2.svg
+    <a href="https://www.jerusalem.muni.il" target="_blank">
+      <img src="https://www.jerusalem.muni.il/images/logo-new2.svg">
     </a>
 
     <div class="header-title">
@@ -164,7 +148,6 @@ body{
     </div>
   </div>
 
-  <!-- CARD -->
   <div class="card">
 
     <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
@@ -180,11 +163,11 @@ body{
         <span>💳</span> לתשלום עכשיו
       </a>
 
-      <a class="btn btn-white" target="_blank" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval">
+      <a class="btn btn-white" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
         📄 פירוט חשבון מלא
       </a>
 
-      <a class="btn btn-white" target="_blank" href="tel:026293333">
+      <a class="btn btn-white" href="tel:026293333">
         ☎ מעבר לנציג
       </a>
 
@@ -204,14 +187,13 @@ body{
 </div>
 
 <script>
-const p=new URL(window.location.href).searchParams;
-document.getElementById("name").textContent=p.get("name")||"";
-document.getElementById("account").textContent=p.get("account")||"";
-document.getElementById("address").textContent=p.get("address")||"";
-document.getElementById("balance").textContent=p.get("balance")||"";
-
-document.getElementById("paybtn").href=p.get("pay")||"#";
-document.getElementById("wa").href="https://wa.me/972559597593?text=שלום "+encodeURIComponent(p.get("name")||"");
+const p=new URL(location.href).searchParams;
+name.textContent = p.get("name") || "";
+account.textContent = p.get("account") || "";
+address.textContent = p.get("address") || "";
+balance.textContent = p.get("balance") || "";
+paybtn.href = p.get("pay") || "#";
+wa.href = "https://wa.me/972559597593?text=שלום "+encodeURIComponent(p.get("name")||"");
 </script>
 
 </body>
