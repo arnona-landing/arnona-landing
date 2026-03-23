@@ -1,165 +1,78 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>תשלום ארנונה</title>
 
 <style>
-  body {
-    font-family: Heebo, Arial;
-    background:#e8f0ff;
-    margin:0;
-    padding:0;
-    color:#0d1b2a;
-  }
+  body {font-family:Heebo,Arial;background:#e8f0ff;margin:0;padding:0;color:#0d1b2a;}
+  .wrap {max-width:900px;margin:auto;padding:12px;}
 
-  .wrap { max-width:900px; margin:auto; padding:12px; }
+  .header{background:black;color:white;padding:20px;display:flex;gap:16px;align-items:center;
+          border-bottom:6px solid #d1a000;border-radius:0 0 12px 12px;}
+  .header svg{width:75px;height:75px;}
 
-  .header{
-    background:black;
-    color:white;
-    padding:20px;
-    display:flex;
-    align-items:center;
-    gap:16px;
-    border-bottom:6px solid #d1a000;
-    border-radius:0 0 12px 12px;
-  }
+  .note{background:#fff3c8;border:1px solid #ffe29b;color:#5a4300;padding:14px;margin:20px 0;
+        border-radius:12px;text-align:center;font-weight:700;}
 
-  .header svg { width:75px; height:75px; }
+  .card{background:white;padding:22px;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.1);}
 
-  .note{
-    background:#fff3c8;
-    border:1px solid #ffe29b;
-    color:#5a4300;
-    padding:14px;
-    margin:20px 0;
-    border-radius:12px;
-    text-align:center;
-    font-weight:700;
-  }
+  .field{background:#f2f6ff;border:1px solid #d7e3ff;padding:14px;border-radius:12px;margin-bottom:14px;}
+  .label{font-size:.9rem;color:#55627a;}
+  .value{font-weight:800;font-size:1.2rem;margin-top:4px;}
 
-  .card{
-    background:white;
-    padding:22px;
-    border-radius:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,0.1);
-  }
+  .cta a{display:block;width:100%;text-align:center;padding:14px;border-radius:12px;font-size:1.1rem;
+         font-weight:800;margin:10px 0;text-decoration:none;}
 
-  .field{
-    background:#f2f6ff;
-    border:1px solid #d7e3ff;
-    padding:14px;
-    border-radius:12px;
-    margin-bottom:14px;
-  }
+  .pay{background:#255bbf;color:white;border:2px solid #1b4a99;}
+  .info{background:white;border:1px solid #cfe0f6;color:#255bbf;}
 
-  .label{
-    font-size:0.9rem;
-    color:#55627a;
-  }
+  .footer{background:#0f2748;color:white;text-align:center;padding:22px;margin-top:28px;border-radius:12px;}
 
-  .value{
-    margin-top:4px;
-    font-weight:800;
-    font-size:1.2rem;
-  }
-
-  .cta a{
-    display:block;
-    width:100%;
-    text-align:center;
-    padding:14px;
-    border-radius:12px;
-    font-weight:800;
-    font-size:1.1rem;
-    margin:10px 0;
-    text-decoration:none;
-  }
-
-  .pay{
-    background:#255bbf;
-    color:white;
-    border:2px solid #1b4a99;
-  }
-
-  .info{
-    background:white;
-    border:1px solid #cfe0f6;
-    color:#255bbf;
-  }
-
-  .footer{
-    background:#0f2748;
-    color:white;
-    text-align:center;
-    padding:22px;
-    margin-top:28px;
-    border-radius:12px;
-  }
-
-  .ltr{ direction:ltr; unicode-bidi:embed; display:inline-block; }
+  .ltr{direction:ltr; unicode-bidi:embed; display:inline-block;}
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
 
+  <!-- HEADER -->
   <div class="header">
     <svg viewBox="0 0 64 64">
       <rect x="6" y="6" width="52" height="52" rx="8" fill="#0a3f86" stroke="#d1a000" stroke-width="3"/>
       <path d="M32 18c4 0 7 3 7 7c2 1 4 3 4 6c0 4-3 7-6 7h-2l-1 4h-6l-1-4h-2
       c-3 0-6-3-6-7c0-3 2-5 4-6c0-4 3-7 7-7z" fill="#d1a000"/>
     </svg>
-
     <div>
       <b style="font-size:1.32rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
       <small>תשלום ארנונה</small>
     </div>
   </div>
 
+  <!-- CARD -->
   <div class="card">
 
     <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
 
-    <div class="field">
-      <div class="label">שם תושב</div>
-      <div id="name" class="value"></div>
-    </div>
-
-    <div class="field">
-      <div class="label">מס' חשבון ארנונה</div>
-      <div id="account" class="value"></div>
-    </div>
-
-    <div class="field">
-      <div class="label">כתובת</div>
-      <div id="address" class="value"></div>
-    </div>
-
-    <div class="field">
-      <div class="label">גובה החוב (₪)</div>
-      <div id="balance" class="value" style="color:#b71c1c;"></div>
-    </div>
+    <div class="field"><div class="label">שם תושב</div><div id="name" class="value"></div></div>
+    <div class="field"><div class="label">מס' חשבון ארנונה</div><div id="account" class="value"></div></div>
+    <div class="field"><div class="label">כתובת</div><div id="address" class="value"></div></div>
+    <div class="field"><div class="label">גובה החוב (₪)</div><div id="balance" class="value" style="color:#b71c1c;"></div></div>
 
     <!-- תשלום -->
-    <a id="paybtn" class="cta pay" target="_blank">💳 לתשלום עכשיו</a>
+    <a id="paybtn" class="pay" target="_blank">💳 לתשלום עכשיו</a>
 
     <!-- פירוט חשבון -->
-    https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval
-      📄 פירוט חשבון מלא
-    </a>
+    https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval📄 פירוט חשבון מלא</a>
 
     <!-- מעבר לנציג -->
-    tel:026293333
-      ☎ מעבר לנציג —
-      <span class="ltr">02-6293333</span>
+    <a class="info" href="tel:026293333">
+      ☎ מעבר לנציג — <span class="ltr">02-6293333</span>
     </a>
 
     <!-- ArnonaBot -->
-    <a id="wa" class="cta info" target="_blank">🤖 ArnonaBot</a>
+    <a id="wa" class="info" target="_blank">🤖 ArnonaBot</a>
 
   </div>
 
@@ -173,14 +86,11 @@
 <script>
 const url = new URL(window.location.href);
 const val = x => url.searchParams.get(x) || "";
-
-document.getElementById("name").textContent    = val("name");
+document.getElementById("name").textContent = val("name");
 document.getElementById("account").textContent = val("account");
 document.getElementById("address").textContent = val("address");
 document.getElementById("balance").textContent = val("balance");
-
 document.getElementById("paybtn").href = val("pay");
-
 document.getElementById("wa").href =
   "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
 </script>
