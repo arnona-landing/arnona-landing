@@ -1,124 +1,151 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>תשלום ארנונה</title>
 
 <style>
+/* ===== בסיס ===== */
 body {
   font-family: Heebo, Arial;
-  background:#eef3ff;
-  margin:0;
-  padding:0;
-  color:#0d1b2a;
+  background: #eef3ff;
+  margin: 0;
+  padding: 0;
+  color: #0d1b2a;
 }
 .wrap {
-  max-width:900px;
-  margin:auto;
-  padding:16px;
+  max-width: 900px;
+  margin: auto;
+  padding: 16px;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header {
-  background:black;
-  color:white;
-  padding:20px;
-  display:flex;
-  gap:16px;
-  align-items:center;
-  border-bottom:6px solid #d1a000;
-  border-radius:0 0 16px 16px;
+  background: black;
+  color: white;
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border-bottom: 6px solid #d1a000;
+  border-radius: 0 0 16px 16px;
 }
-.header svg { width:78px; height:78px; }
 
-/* NOTICE */
+/* לוגו מקצועי */
+.header svg {
+  width: 70px;
+  height: 70px;
+  animation: pop 0.6s ease-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== התראה ===== */
 .note {
-  background:#fff3c8;
-  border:1px solid #ffe29b;
-  color:#5a4300;
-  padding:14px;
-  margin:22px 0;
-  border-radius:12px;
-  text-align:center;
-  font-weight:700;
+  background: #fff3c8;
+  border: 1px solid #ffe29b;
+  color: #5a4300;
+  padding: 14px;
+  margin: 22px 0;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
 }
 
-/* CARD */
+/* ===== CARD ===== */
 .card {
-  background:white;
-  padding:22px;
-  border-radius:16px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-/* FIELDS */
+/* ===== FIELDS ===== */
 .field {
-  background:#f2f6ff;
-  border:1px solid #d7e3ff;
-  padding:14px;
-  border-radius:12px;
-  margin-bottom:16px;
+  background: #f2f6ff;
+  border: 1px solid #d7e3ff;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 16px;
 }
-.label {
-  font-size:0.9rem;
-  color:#55627a;
-}
-.value {
-  margin-top:4px;
-  font-weight:800;
-  font-size:1.2rem;
-}
+.label { font-size: 0.9rem; color: #55627a; }
+.value { margin-top: 4px; font-weight: 800; font-size: 1.2rem; }
 
-/* BUTTONS AREA */
+/* ===== BUTTONS ===== */
 .buttons {
-  margin-top:18px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .btn {
-  display:block;
-  width:100%;
-  text-align:center;
-  padding:14px;
-  border-radius:12px;
-  font-weight:800;
-  font-size:1.15rem;
-  text-decoration:none;
+  display: block;
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.17rem;
+  text-decoration: none;
+  width: 100%;
+  transition: 0.25s;
 }
 
-/* ✅ כפתור תשלום ירוק */
+/* ✅ כפתור תשלום ירוק + אייקון זז */
 .btn-pay {
-  background:#1fa548;
-  color:white;
-  border:2px solid #17853a;
-  box-shadow:0 4px 12px rgba(23,133,58,0.35);
+  background: #11a751;
+  color: white;
+  border: 2px solid #0d803d;
+  box-shadow: 0 4px 16px rgba(17,167,81,0.35);
+  position: relative;
+}
+
+.btn-pay:hover {
+  background: #0f9748;
+  transform: translateY(-2px);
+}
+
+/* אייקון זז */
+.btn-pay span {
+  display: inline-block;
+  margin-right: 6px;
+  transition: transform 0.3s;
+}
+
+.btn-pay:hover span {
+  transform: translateX(5px);
 }
 
 /* ✅ כפתור פירוט חשבון */
 .btn-info {
-  background:white;
-  border:1px solid #cfe0f6;
-  color:#255bbf;
+  background: white;
+  border: 1px solid #cfe0f6;
+  color: #255bbf;
 }
 
-/* ✅ כפתור מעבר לנציג — כחול‑אפור נקי */
+/* ✅ מעבר לנציג — כהה ומכובד */
 .btn-call {
-  background:#e9eef7;
-  border:1px solid #c8d3ea;
-  color:#2d4771;
+  background: #354a6d;
+  color: white;
+  border: 1px solid #2c3f5e;
+  box-shadow: 0 4px 14px rgba(53,74,109,0.35);
+}
+.btn-call:hover {
+  background: #2c3f5e;
 }
 
 /* FOOTER */
 .footer {
-  background:#0f2748;
-  color:white;
-  padding:24px;
-  text-align:center;
-  margin-top:32px;
-  border-radius:12px;
+  background: #0f2748;
+  color: white;
+  padding: 24px;
+  text-align: center;
+  margin-top: 32px;
+  border-radius: 12px;
 }
 
 .ltr { direction:ltr; unicode-bidi:embed; display:inline-block; }
@@ -131,11 +158,13 @@ body {
 
   <!-- HEADER -->
   <div class="header">
+    <!-- לוגו מקצועי SVG -->
     <svg viewBox="0 0 64 64">
       <rect x="6" y="6" width="52" height="52" rx="8"
         fill="#0a3f86" stroke="#d1a000" stroke-width="3"/>
       <path d="M32 18c4 0 7 3 7 7c2 1 4 3 4 6c0 4-3 7-6 7h-2l-1 4h-6l-1-4h-2
-      c-3 0-6-3-6-7c0-3 2-5 4-6c0-4 3-7 7-7z" fill="#d1a000"/>
+      c-3 0-6-3-6-7c0-3 2-5 4-6c0-4 3-7 7-7z"
+      fill="#d1a000"/>
     </svg>
 
     <div>
@@ -172,23 +201,22 @@ body {
     <!-- BUTTONS -->
     <div class="buttons">
 
-      <!-- ✅ לתשלום עכשיו — ירוק -->
+      <!-- תשלום עכשיו ירוק עם אייקון זז -->
       <a id="paybtn" class="btn btn-pay" target="_blank">
-        💳 לתשלום עכשיו
+        <span>💳</span> לתשלום עכשיו
       </a>
 
-      <!-- ✅ פירוט חשבון מלא -->
-      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval"
-         class="btn btn-info" target="_blank">
+      <!-- פירוט חשבון -->
+      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" class="btn btn-info" target="_blank">
         📄 פירוט חשבון מלא
       </a>
 
-      <!-- ✅ מעבר לנציג — כחול‑אפור -->
-      <a class="btn btn-call" href="tel:02-6293333">
+      <!-- מעבר לנציג — כהה -->
+      <a href="tel:026293333" class="btn btn-call">
         ☎ מעבר לנציג — <span class="ltr">02-6293333</span>
       </a>
 
-      <!-- ✅ ArnonaBot -->
+      <!-- ArnonaBot -->
       <a id="wa" class="btn btn-info" target="_blank">
         🤖 ArnonaBot
       </a>
