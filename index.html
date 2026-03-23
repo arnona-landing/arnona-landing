@@ -6,6 +6,7 @@
 <title>תשלום ארנונה</title>
 
 <style>
+
 /* ===== בסיס ===== */
 body {
   font-family: Heebo, Arial;
@@ -14,31 +15,36 @@ body {
   padding:0;
   color:#0d1b2a;
 }
+
 .wrap {
   max-width:900px;
   margin:auto;
   padding:16px;
 }
 
-/* ===== HEADER — כמו באתר העירייה ===== */
+/* ===== HEADER ===== */
 .header {
   background:#0F3A5F;
   color:white;
   padding:18px 20px;
   display:flex;
-  gap:18px;
   align-items:center;
+  justify-content:space-between;
   border-bottom:6px solid #F2A900;
   border-radius:0 0 12px 12px;
 }
 
-/* לוגו עיריית ירושלים */
+/* לוגו רשמי */
 .header img {
   width:95px;
   height:auto;
-  display:block;
-  filter: brightness(0) invert(1); /* הפיכת SVG ללבן */
+  filter: brightness(0) invert(1);
   cursor:pointer;
+}
+
+/* טקסט בכותרת */
+.header-title {
+  text-align:right;
 }
 
 /* ===== אזהרה ===== */
@@ -69,17 +75,11 @@ body {
   border-radius:12px;
   margin-bottom:16px;
 }
-.label {
-  font-size:0.9rem;
-  color:#55627a;
-}
-.value {
-  margin-top:4px;
-  font-weight:800;
-  font-size:1.2rem;
-}
 
-/* ===== כפתורים ===== */
+.label { font-size:0.9rem; color:#55627a; }
+.value { margin-top:4px; font-weight:800; font-size:1.2rem; }
+
+/* ===== BUTTONS ===== */
 .buttons {
   margin-top:18px;
   display:flex;
@@ -89,7 +89,6 @@ body {
 
 .btn {
   display:block;
-  width:100%;
   text-align:center;
   padding:15px;
   border-radius:12px;
@@ -113,11 +112,11 @@ body {
   transition:transform .3s ease;
 }
 .btn-pay:hover span {
-  transform:translateX(7px);
+  transform:translateX(8px);
 }
 .btn-pay:hover {
-  transform:translateY(-2px);
   background:#169640;
+  transform:translateY(-2px);
 }
 
 /* ✅ כפתור פירוט חשבון */
@@ -127,7 +126,7 @@ body {
   color:#255bbf;
 }
 
-/* ✅ כפתור מעבר לנציג — כחול עירוני כהה */
+/* ✅ מעבר לנציג — כחול עירוני (C4) */
 .btn-call {
   background:#1D3354;
   border:1px solid #16273F;
@@ -156,6 +155,7 @@ body {
 }
 
 .ltr { direction:ltr; unicode-bidi:embed; display:inline-block; }
+
 </style>
 </head>
 
@@ -165,16 +165,20 @@ body {
 
   <!-- ===== HEADER ===== -->
   <div class="header">
-    <!-- לוגו רשמי + קישור לאתר העירייה -->
-    https://www.jerusalem.muni.il/images/logo-new2.svg
 
-    <div>
+    <!-- לוגו רשמי + קישור -->
+    <a href="https://www.jerusalem.muni.il" target="_blank">
+      <img src="https://www.jerusalem.muni.il/images/logo-new2.svg" alt="עיריית ירושלים - לוגו רשמי">
+    </a>
+
+    <div class="header-title">
       <b style="font-size:1.3rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
       <small>תשלום ארנונה</small>
     </div>
+
   </div>
 
-  <!-- ===== כרטיס מידע ===== -->
+  <!-- ===== כרטיס ===== -->
   <div class="card">
 
     <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
@@ -208,15 +212,13 @@ body {
       </a>
 
       <!-- פירוט חשבון מלא -->
-      <a class="btn btn-info"
-         href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval"
-         target="_blank">
+      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" class="btn btn-info" target="_blank">
         📄 פירוט חשבון מלא
       </a>
 
       <!-- מעבר לנציג -->
-      <a class="btn btn-call" href="tel:02-6293333">
-        ☎ מעבר לנציג — <span class="ltr">02-6293333</span>
+      <a href="tel:026293333" class="btn btn-call">
+        ☎ מעבר לנציג — <span class="ltr">02‑6293333</span>
       </a>
 
       <!-- ArnonaBot -->
@@ -248,7 +250,8 @@ balance.textContent  = val("balance");
 document.getElementById("paybtn").href = val("pay");
 
 document.getElementById("wa").href =
-  "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
+  "https://wa.me/972559597593?text=שלום " + 
+  encodeURIComponent(val("name"));
 </script>
 
 </body>
