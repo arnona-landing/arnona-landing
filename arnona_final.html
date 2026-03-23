@@ -6,7 +6,6 @@
 <title>תשלום ארנונה</title>
 
 <style>
-  /* ✅ מצב בהיר */
   body {
     font-family: Heebo, Arial;
     background:#e8f0ff;
@@ -14,191 +13,126 @@
     padding:0;
     color:#0d1b2a;
   }
-
-  /* ✅ מצב כהה — אוטומטי לפי הטלפון */
   @media (prefers-color-scheme: dark) {
-    body {
-      background:#0d1117;
-      color:white;
-    }
+    body { background:#0d1117; color:white; }
     .card { background:#161b22; }
     .field { background:#1e2430; border-color:#2d3242; }
     .primary { background:#1f6feb; border-color:#1158c7; }
-    .secondary { border-color:#2d3242; color:#58a6ff; }
     .footer { background:#010409; }
   }
-
-  .wrap{ max-width:900px; margin:auto; }
-
-  /* ✅ כותרת שחור–זהוב */
+  .wrap { max-width:900px; margin:auto; }
   .header{
     background:black;
     color:white;
-    padding:18px;
+    padding:20px;
     display:flex;
     align-items:center;
     gap:18px;
     border-bottom:6px solid #d1a000;
   }
-
-  .header img{
-    width:85px;
-    height:auto;
-    object-fit:contain;
-  }
-
-  /* ✅ קופסת אזהרה */
+  .header svg{ width:80px; height:80px; }
   .note{
     background:#fff3c8;
     border:1px solid #ffe29b;
     color:#5a4300;
     padding:14px;
-    margin:20px 0;
+    margin:22px 0;
     border-radius:12px;
-    font-weight:700;
     text-align:center;
+    font-weight:700;
   }
-
-  /* ✅ כרטיס לבן */
   .card{
     background:white;
-    padding:22px;
+    padding:24px;
     border-radius:14px;
     box-shadow:0 4px 18px rgba(0,0,0,0.12);
   }
-
-  /* ✅ מצב כהה אוטומטי (כרטיס) */
-  @media (prefers-color-scheme: dark) {
-    .card {
-      background:#161b22;
-      box-shadow:none;
-    }
-  }
-
-  /* ✅ שדות */
   .field{
     background:#f2f6ff;
     border:1px solid #d7e3ff;
     padding:14px;
     border-radius:12px;
-    margin-bottom:16px;
+    margin-bottom:18px;
   }
-
-  .label{ font-size:.9rem; color:#55627a; }
-  .value{ margin-top:6px; font-weight:800; font-size:1.15rem; }
-
-  /* ✅ כפתורי פעולה */
+  .label{ font-size:0.9rem; color:#55627a; }
+  .value{ margin-top:6px; font-weight:800; font-size:1.18rem; }
   .cta a{
     display:block;
     width:100%;
     text-align:center;
-    padding:15px 0;
+    padding:16px 0;
     border-radius:12px;
-    margin:10px 0;
+    margin:12px 0;
     font-weight:800;
     font-size:1.2rem;
     text-decoration:none;
   }
-
   .primary{
     background:#255bbf;
     color:white;
     border:2px solid #1b4a99;
     box-shadow:0 4px 12px rgba(37,91,191,0.35);
   }
-
   .secondary{
     background:white;
     border:1px solid #cfe0f6;
     color:#255bbf;
   }
-
-  /* ✅ תחתית */
   .footer{
     background:#0f2748;
     color:white;
+    padding:24px;
     text-align:center;
-    padding:22px;
     margin-top:35px;
-    font-size:0.95rem;
   }
-
 </style>
 </head>
 
 <body>
 <div class="wrap">
 
-  <!-- ✅ HEADER עם הלוגו שהעלית -->
   <div class="header">
-    <img src="LOGO.jfif" alt="לוגו">
+    <svg viewBox="0 0 64 64">
+      <rect x="6" y="6" width="52" height="52" rx="8" fill="#0a3f86" stroke="#d1a000" stroke-width="3"/>
+      <path d="M32 18c4 0 7 3 7 7c2 1 4 3 4 6c0 4-3 7-6 7h-2l-1 4h-6l-1-4h-2c-3 0-6-3-6-7c0-3 2-5 4-6c0-4 3-7 7-7z" fill="#d1a000"/>
+    </svg>
     <div>
-      <b style="font-size:1.3rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
+      <b style="font-size:1.35rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
       <small>תשלום ארנונה</small>
     </div>
   </div>
 
-  <!-- MAIN -->
   <div class="card">
+    <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
 
-    <div class="note">
-      ⚠️ תזכורת לפני נקיטת הליכי אכיפה
-    </div>
+    <div class="field"><div class="label">שם תושב</div><div class="value" id="name"></div></div>
+    <div class="field"><div class="label">מס' חשבון ארנונה</div><div class="value" id="account"></div></div>
+    <div class="field"><div class="label">כתובת</div><div class="value" id="address"></div></div>
+    <div class="field"><div class="label">גובה החוב (₪)</div><div class="value" id="balance" style="color:#b71c1c;"></div></div>
 
-    <div class="field">
-      <div class="label">שם תושב</div>
-      <div class="value" id="name"></div>
-    </div>
-
-    <div class="field">
-      <div class="label">מס' חשבון ארנונה</div>
-      <div class="value" id="account"></div>
-    </div>
-
-    <div class="field">
-      <div class="label">כתובת</div>
-      <div class="value" id="address"></div>
-    </div>
-
-    <div class="field">
-      <div class="label">גובה החוב (₪)</div>
-      <div class="value" id="balance" style="color:#b71c1c;"></div>
-    </div>
-
-    <!-- ✅ כפתורים -->
     <div class="cta">
       <a id="paybtn" class="primary" target="_blank">💳 לתשלום עכשיו</a>
-
-      <a class="secondary" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
-        פירוט חשבון
-      </a>
-
-      <a class="secondary" href="tel:02-6293333">
-        ☎ מעבר לנציג
-      </a>
-
+      <a class="secondary" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">פירוט חשבון</a>
+      <a class="secondary" href="tel:02-6293333">☎ מעבר לנציג — 02-6293333</a>
       <a id="wa" class="secondary" target="_blank">🤖 ArnonaBot</a>
     </div>
-
   </div>
 
   <div class="footer">
-    אגף ארנונה – עיריית ירושלים<br>
-    שעות מענה: 08:00–18:00<br>
-    טלפון המוקד: 02‑6293333
+    אגף ארנונה – עיריית ירושלים<br>שעות מענה: 08:00–18:00<br>טלפון המוקד: 02‑6293333
   </div>
 
 </div>
 
 <script>
 const url = new URL(window.location.href);
-const val = x => url.searchParams.get(x) || "";
+const val = (x) => url.searchParams.get(x) || "";
 
-document.getElementById("name").textContent    = val("name");
+document.getElementById("name").textContent = val("name");
 document.getElementById("account").textContent = val("account");
 document.getElementById("address").textContent = val("address");
 document.getElementById("balance").textContent = val("balance");
-document.getElementById("paybtn").href         = val("pay");
+document.getElementById("paybtn").href = val("pay");
 
 document.getElementById("wa").href =
   "https://wa.me/972559597593?text=שלום " + encodeURIComponent(val("name"));
