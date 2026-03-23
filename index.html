@@ -15,6 +15,12 @@ body{
   padding:0;
   color:#0d1b2a;
 }
+
+/* חשוב ביותר — מונע גלילה שמאלה */
+*{
+  box-sizing:border-box;
+}
+
 .wrap{
   max-width:900px;
   margin:auto;
@@ -33,20 +39,19 @@ body{
   border-radius:0 0 12px 12px;
 }
 
-/* ✅ לוגו אמיתי + גדול */
+/* לוגו */
 .header img{
   width:170px;
   height:auto;
   filter:brightness(0) invert(1);
-  cursor:pointer;
 }
 
-/* ✅ כותרת ממורכזת באמת */
+/* כותרת */
 .header-title{
   flex:1;
   text-align:center;
   line-height:1.25;
-  margin-right:20px; /* מפצה על רוחב הלוגו */
+  margin-right:30px; 
 }
 
 /* ===== אזהרה ===== */
@@ -67,6 +72,7 @@ body{
   padding:22px;
   border-radius:14px;
   box-shadow:0 4px 18px rgba(0,0,0,0.12);
+  overflow:hidden;  /* ✅ מונע יציאה שמאלה */
 }
 
 /* ===== FIELDS ===== */
@@ -77,23 +83,19 @@ body{
   border-radius:12px;
   margin-bottom:16px;
 }
-.label{
-  font-size:0.9rem;
-  color:#55627a;
-}
-.value{
-  margin-top:4px;
-  font-weight:800;
-  font-size:1.2rem;
-}
+.label{font-size:0.9rem;color:#55627a;}
+.value{margin-top:4px;font-weight:800;font-size:1.2rem;}
 
-/* ===== BUTTONS ===== */
+/* ===== BUTTON WRAPPER ===== */
 .buttons{
   margin-top:18px;
   display:flex;
   flex-direction:column;
   gap:14px;
+  width:100%;
 }
+
+/* ===== BUTTON ===== */
 .btn{
   display:block;
   width:100%;
@@ -106,7 +108,7 @@ body{
   transition:0.25s;
 }
 
-/* ✅ תשלום ירוק */
+/* ירוק */
 .btn-pay{
   background:#1fa548;
   color:white;
@@ -117,26 +119,21 @@ body{
   margin-right:6px;
   transition:transform .3s ease;
 }
-.btn-pay:hover span{
-  transform:translateX(8px);
-}
+.btn-pay:hover span{transform:translateX(8px);}
 .btn-pay:hover{
   background:#169640;
   transform:translateY(-2px);
 }
 
-/* ✅ כפתורי לבן */
+/* לבן */
 .btn-white{
   background:white;
   border:1px solid #d7e3ff;
   color:#1D3354;
   box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
-.btn-white:hover{
-  background:#f8f9fc;
-}
 
-/* FOOTER חדש */
+/* FOOTER */
 .footer{
   background:#0F2748;
   color:white;
@@ -148,12 +145,6 @@ body{
   line-height:1.5;
 }
 
-.ltr{
-  direction:ltr;
-  unicode-bidi:embed;
-  display:inline-block;
-}
-
 </style>
 </head>
 
@@ -161,23 +152,19 @@ body{
 
 <div class="wrap">
 
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <div class="header">
-
-    <!-- ✅ לוגו אמיתי עם קישור -->
-    <a href="https://www.jerusalem.muni.il" target="_blank">
-      <img src="https://www.jerusalem.muni.il/images/logo-new2.svg" alt="לוגו עיריית ירושלים">
+    https://www.jerusalem.muni.il
+      https://www.jerusalem.muni.il/images/logo-new2.svg
     </a>
 
-    <!-- ✅ כותרת ממורכזת -->
     <div class="header-title">
       <b style="font-size:1.4rem;">מחלקת אכיפה — עיריית ירושלים</b><br>
       <small>תשלום ארנונה</small>
     </div>
-
   </div>
 
-  <!-- ===== CARD ===== -->
+  <!-- CARD -->
   <div class="card">
 
     <div class="note">⚠️ תזכורת לפני נקיטת הליכי אכיפה</div>
@@ -189,22 +176,18 @@ body{
 
     <div class="buttons">
 
-      <!-- ✅ תשלום ירוק -->
       <a id="paybtn" class="btn btn-pay" target="_blank">
         <span>💳</span> לתשלום עכשיו
       </a>
 
-      <!-- ✅ פירוט חשבון מלא (כפתור אמיתי) -->
-      <a class="btn btn-white" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" target="_blank">
+      <a class="btn btn-white" target="_blank" href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval">
         📄 פירוט חשבון מלא
       </a>
 
-      <!-- ✅ מעבר לנציג — לבן, בלי מספר בפנים -->
-      <a class="btn btn-white" href="tel:026293333">
+      <a class="btn btn-white" target="_blank" href="tel:026293333">
         ☎ מעבר לנציג
       </a>
 
-      <!-- ✅ ArnonaBot -->
       <a id="wa" class="btn btn-white" target="_blank">
         🤖 ArnonaBot
       </a>
@@ -221,14 +204,14 @@ body{
 </div>
 
 <script>
-const p = new URL(window.location.href).searchParams;
-document.getElementById("name").textContent = p.get("name") || "";
-document.getElementById("account").textContent = p.get("account") || "";
-document.getElementById("address").textContent = p.get("address") || "";
-document.getElementById("balance").textContent = p.get("balance") || "";
-document.getElementById("paybtn").href = p.get("pay") || "#";
-document.getElementById("wa").href =
-  "https://wa.me/972559597593?text=שלום " + encodeURIComponent(p.get("name") || "");
+const p=new URL(window.location.href).searchParams;
+document.getElementById("name").textContent=p.get("name")||"";
+document.getElementById("account").textContent=p.get("account")||"";
+document.getElementById("address").textContent=p.get("address")||"";
+document.getElementById("balance").textContent=p.get("balance")||"";
+
+document.getElementById("paybtn").href=p.get("pay")||"#";
+document.getElementById("wa").href="https://wa.me/972559597593?text=שלום "+encodeURIComponent(p.get("name")||"");
 </script>
 
 </body>
