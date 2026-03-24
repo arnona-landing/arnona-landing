@@ -46,7 +46,7 @@ body{
   flex:1;
   text-align:center;
   line-height:1.22;
-  padding-left:50px; /* מפצה על רוחב הלוגו */
+  padding-left:50px;
 }
 
 /* ===== NOTE ===== */
@@ -66,7 +66,7 @@ body{
   padding:22px;
   border-radius:16px;
   box-shadow:0 4px 18px rgba(0,0,0,0.12);
-  overflow:hidden; /* ✅ מונע בליטה */
+  overflow:hidden;
 }
 
 /* ===== FIELDS ===== */
@@ -87,7 +87,7 @@ body{
   flex-direction:column;
   gap:14px;
   width:100%;
-  padding:0 4px; /* ✅ prevents left overflow */
+  padding:0 4px;
 }
 
 .btn{
@@ -102,7 +102,7 @@ body{
   box-sizing:border-box;
 }
 
-/* ✅ ירוק */
+/* ירוק */
 .btn-pay{
   background:#1fa548;
   color:white;
@@ -117,7 +117,7 @@ body{
   transform:translateX(8px);
 }
 
-/* ✅ לבנים */
+/* לבנים */
 .btn-white{
   background:white;
   border:1px solid #d7e3ff;
@@ -125,7 +125,7 @@ body{
   box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 .footer{
   background:#0F2748;
   color:white;
@@ -135,6 +135,7 @@ body{
   border-radius:12px;
   font-size:1.05rem;
 }
+
 </style>
 </head>
 
@@ -170,23 +171,22 @@ body{
 
     <div class="buttons">
 
-      <!-- ✅ תשלום -->
+      <!-- תשלום -->
       <a id="paybtn" class="btn btn-pay" target="_blank">
         <span>💳</span> לתשלום עכשיו
       </a>
 
-      <!-- ✅ פירוט חשבון -->
-      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval"
-         class="btn btn-white" target="_blank">
+      <!-- פירוט חשבון -->
+      <a href="https://jeronlineforms.jerusalem.muni.il/ArnonaBalanceApproval" class="btn btn-white" target="_blank">
         📄 פירוט חשבון מלא
       </a>
 
-      <!-- ✅ מעבר לנציג -->
+      <!-- מעבר לנציג -->
       <a href="tel:026293333" class="btn btn-white">
         ☎ מעבר לנציג
       </a>
 
-      <!-- ✅ בוט -->
+      <!-- ArnonaBot -->
       <a id="wa" class="btn btn-white" target="_blank">
         🤖 ArnonaBot
       </a>
